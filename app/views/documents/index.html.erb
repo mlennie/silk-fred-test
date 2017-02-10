@@ -3,3 +3,28 @@
   <%= file_field_tag :file %>
   <%= submit_tag "Import" %>
 <% end %>
+
+<h2>Transformed Documents</h2>
+<table>
+  <tr>
+    <th>Document Id</th>
+    <th>Created  At</th>
+    <th>Export Link</th>
+  </tr>
+  <% @documents.each do |doc| %>
+    <tr>
+      <td>
+        <%= doc.id %>
+      </td>
+      <td>
+        <%= doc.created_at %>
+      </td>
+      <td>
+        <% if doc.complete %>
+        <% else %>
+          Finishing montages ...
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

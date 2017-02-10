@@ -5,4 +5,5 @@ class Line < ApplicationRecord
   def create_montage
     return true
   end
+
 end
