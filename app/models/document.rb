@@ -19,4 +19,14 @@ class Document < ApplicationRecord
     end
   end
 
+  def export(options = {})
+    desired_columns = ["url_one", "url_two", "montage_url"]
+    CSV.generate(options) do |csv|
+      csv << desired_columns
+      lines.all.each do |line|
+        csv << line.attributes.values_at(*desired_columns)
+      end
+    end
+  end
+
 end
