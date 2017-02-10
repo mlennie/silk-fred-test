@@ -26,7 +26,7 @@ class Document < ApplicationRecord
     CSV.generate(options) do |csv|
       csv << desired_columns
       lines.all.each do |line|
-        csv << line.attributes.values_at(*desired_columns)
+        csv << [line.url_one, line.url_two, Rails.application.routes.url_helpers.montage_url(line)]
       end
     end
   end

@@ -20,10 +20,9 @@ class Line < ApplicationRecord
     row.push(Image.read("./temp_img_two.png").first)
 
     new_montage.push (row.append(false))
-    #new_montage.append(true).write("montage_" + id.to_s + ".jpg")
 
     picture = new_montage.flatten_images
-    file = Tempfile.new("montage_" + id.to_s + ".jpg")
+    file = Tempfile.new("temp_image.jpg")
     picture.write(file.path)
 
     self.update(montage:file.read)
