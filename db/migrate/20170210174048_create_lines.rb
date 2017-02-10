@@ -3,7 +3,7 @@ class CreateLines < ActiveRecord::Migration[5.0]
     create_table :lines do |t|
       t.string :url_one
       t.string :url_two
-      t.string :montage_url
+      t.binary :montage
       t.integer :document_id
 
       t.timestamps

@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170210174107) do
   create_table "lines", force: :cascade do |t|
     t.string   "url_one"
     t.string   "url_two"
-    t.string   "montage_url"
+    t.binary   "montage"
     t.integer  "document_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

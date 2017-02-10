@@ -15,4 +15,9 @@ class DocumentsController < ApplicationController
       format.csv { send_data @document.export }
     end
   end
+
+  def get_montage
+    line = Line.find(params[:id])
+    send_data line.montage
+  end
 end
