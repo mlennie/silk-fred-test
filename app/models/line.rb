@@ -29,7 +29,7 @@ class Line < ApplicationRecord
     row = ImageList.new
 
     row.push(Image.read(temp_path_one).first)
-    row.push(Image.read(temp_path_one).first)
+    row.push(Image.read(temp_path_two).first)
 
     new_montage.push (row.append(false))
 
@@ -41,12 +41,28 @@ class Line < ApplicationRecord
     ########################
     # Add watercolor
     ########################
+=begin
     img = Magick::Image.read(temp_path_three).first
+    binding.pry
     mark = Magick::Image.read("./generic_logo.png").first
     img1 = img.composite(mark, Magick::CenterGravity, Magick::SoftLightCompositeOp)
     img1.write(file.path)
 
+    img = MiniMagick::Image.from_file(file.path)
+
+    img.combine_options do |c|
+      c.gravity 'SouthEast'
+      c.draw 'image Over 0,0 0,0 "./generic_logo.png"'
+    end
+
+    img.write(file.path)
+=end
+
     data = file.read
+
+    ########################
+    # Save Image and Clean up Files
+    ########################
 
     self.update!(montage:data)
 
