@@ -15,7 +15,7 @@ class Document < ApplicationRecord
       }
 
       line = Line.create(line_data)
-      line.create_montage
+      CreateMontageJob.perform_later(line)
     end
   end
 
