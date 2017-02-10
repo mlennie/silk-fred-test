@@ -5,7 +5,8 @@ class Document < ApplicationRecord
   def self.import file
     doc = Document.create
     spreadsheet = Roo::Spreadsheet.open(file.path)
-    (1..spreadsheet.last_row).each do |i|
+    rows = spreadsheet.last_row
+    (1..rows).each do |i|
       row = spreadsheet.row(i)
 
       line_data = {
@@ -15,8 +16,9 @@ class Document < ApplicationRecord
       }
 
       line = Line.create(line_data)
-      CreateMontageJob.perform_later(line)
+      CreateMontageJob.perform_later(line,rows)
     end
+
   end
 
   def export(options = {})

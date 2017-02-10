@@ -20,7 +20,7 @@
         <%= doc.created_at %>
       </td>
       <td>
-        <% if !doc.complete %>
+        <% if doc.complete %>
           <%= link_to "Export CSV", document_path(doc, format: "csv") %>
         <% else %>
           Finishing montages ...
