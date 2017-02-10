@@ -117,6 +117,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    rmagick (2.16.0)
     roo (2.7.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
@@ -172,6 +173,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.1)
+  rmagick
   roo
   sass-rails (~> 5.0)
   spring
